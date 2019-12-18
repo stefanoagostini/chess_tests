@@ -23,6 +23,7 @@ while not board.is_game_over():
 
 engine.quit()
 
+print(board.result())
 print(board)
 print(game)
 new_pgn = open("game.pgn", "w", encoding="utf-8")
