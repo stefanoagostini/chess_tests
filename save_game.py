@@ -19,6 +19,10 @@ while not board.is_game_over():
         init = False
     else:
         node = node.add_variation(chess.Move.from_uci(move))
+        info = engine.analyse(board, chess.engine.Limit(depth=20))
+        score = int(str(info["score"]))/100.
+        print(score)
+        node.comment = str(score)
 
 
 engine.quit()
@@ -26,6 +30,6 @@ engine.quit()
 print(board.result())
 print(board)
 print(game)
-new_pgn = open("game.pgn", "w", encoding="utf-8")
+new_pgn = open("games/game.pgn", "w", encoding="utf-8")
 exporter = chess.pgn.FileExporter(new_pgn)
 game.accept(exporter)
